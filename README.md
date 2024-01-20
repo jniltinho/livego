@@ -2,7 +2,6 @@
     <img src='./logo.png' width='200px' height='80px'/>
 </p>
 
-[中文](./README_cn.md)
 
 [![Test](https://github.com/gwuhaolin/livego/workflows/Test/badge.svg)](https://github.com/gwuhaolin/livego/actions?query=workflow%3ATest)
 [![Release](https://github.com/gwuhaolin/livego/workflows/Release/badge.svg)](https://github.com/gwuhaolin/livego/actions?query=workflow%3ARelease)
