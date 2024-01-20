@@ -13,6 +13,7 @@ import (
 	"github.com/gwuhaolin/livego/protocol/hls"
 	"github.com/gwuhaolin/livego/protocol/httpflv"
 	"github.com/gwuhaolin/livego/protocol/rtmp"
+	"github.com/gwuhaolin/livego/protocol/server"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -131,6 +132,13 @@ func startAPI(stream *rtmp.RtmpStream) {
 	}
 }
 
+func startHTTP() {
+	httpAddr := configure.Config.GetString("http_addr")
+	liveUrl := configure.Config.GetString("live_url")
+	log.Info("HTTP listen On ", httpAddr)
+	go server.RunServer(httpAddr, liveUrl)
+}
+
 func init() {
 	log.SetFormatter(&log.TextFormatter{
 		FullTimestamp: true,
@@ -160,6 +168,7 @@ func main() {
 
 	apps := configure.Applications{}
 	configure.Config.UnmarshalKey("server", &apps)
+
 	for _, app := range apps {
 		stream := rtmp.NewRtmpStream()
 		var hlsServer *hls.Server
@@ -173,6 +182,7 @@ func main() {
 			startAPI(stream)
 		}
 
+		startHTTP()
 		startRtmp(stream, hlsServer)
 	}
 }

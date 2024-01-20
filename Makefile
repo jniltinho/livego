@@ -1,4 +1,4 @@
-GOCMD ?= go 
+GOCMD ?= go
 GOBUILD = $(GOCMD) build
 GOCLEAN = $(GOCMD) clean
 GOTEST = $(GOCMD) test
@@ -15,7 +15,7 @@ default: all
 
 all: test build dockerize
 build:
-	CGO_ENABLED=0 $(GOBUILD) -ldflags="-s -w" -o $(BINARY_NAME) -v -ldflags="-X main.VERSION=$(TAG)"
+	CGO_ENABLED=0 $(GOBUILD) -o $(BINARY_NAME) -v -ldflags="-s -w -X main.VERSION=$(TAG)"
 
 test:
 	$(GOTEST) -v ./...

@@ -35,7 +35,7 @@ Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -d jniltinho
 
 #### Compile from source
 1. Download the source code `git clone https://github.com/jniltinho/livego.git`
-2. Go to the livego directory and execute `go build` or `make build`
+2. Go to the livego directory and execute `go build -ldflags="-s -w"` or `make build`
 
 ## Use
 1. Start the service: execute the livego binary file or `make run` to start the livego service;
