@@ -30,7 +30,7 @@ Simple and efficient live broadcast server:
 After directly downloading the compiled [binary file](https://github.com/jniltinho/livego/releases), execute it on the command line.
 
 #### Boot from Docker
-Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -d jniltinho/livego` to start
+Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -p 3001:3001 -d jniltinho/livego` to start
 
 #### Compile from source
 1. Download the source code `git clone https://github.com/jniltinho/livego.git`
@@ -52,14 +52,21 @@ all options:
 Usage of ./livego:
       --api_addr string       HTTP manage interface server listen address (default ":8090")
       --config_file string    configure filename (default "livego.yaml")
+      --enable_rtmps          enable server session RTMPS
+      --enable_tls_verify     Use system root CA to verify RTMPS connection, set this flag to false on Windows (default true)
       --flv_dir string        output flv file at flvDir/APP/KEY_TIME.flv (default "tmp")
       --gop_num int           gop num (default 1)
       --hls_addr string       HLS server listen address (default ":7002")
       --hls_keep_after_end    Maintains the HLS after the stream ends
+      --http_addr string      HTTP server listen address (default ":3001")
       --httpflv_addr string   HTTP-FLV server listen address (default ":7001")
       --level string          Log level (default "info")
+      --live_url string       Live URL (default "http://localhost:7001/live/movie.flv")
       --read_timeout int      read time out (default 10)
-      --rtmp_addr string      RTMP server listen address
+      --rtmp_addr string      RTMP server listen address (default ":1935")
+      --rtmps_cert string     cert file path required for RTMPS (default "server.crt")
+      --rtmps_key string      key file path required for RTMPS (default "server.key")
+      --write_timeout int     write time out (default 10)
 ```
 
 ### [Use with flv.js](https://github.com/gwuhaolin/blog/issues/3)
