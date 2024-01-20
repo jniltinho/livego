@@ -46,7 +46,7 @@ Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -p 3001:3001
     - `HLS`:`http://127.0.0.1:7002/{appname}/movie.m3u8`
 5. Use hls via https: generate ssl certificate(server.key, server.crt files), place them in directory with executable file, change "use_hls_https" option in livego.yaml to true (false by default)
 
-all options: 
+All options: 
 ```bash
 ./livego  -h
 Usage of ./livego:
@@ -69,6 +69,4 @@ Usage of ./livego:
       --write_timeout int     write time out (default 10)
 ```
 
-### [Use with flv.js](https://github.com/gwuhaolin/blog/issues/3)
-
-Interested in Golang? Please see [Golang Chinese Learning Materials Summary](http://go.wuhaolin.cn/)
+### [Use with flv.js](https://github.com/xqq/mpegts.js/tree/master/demo)
