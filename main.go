@@ -137,7 +137,7 @@ func startHTTP() {
 	httpAddr := configure.Config.GetString("http_addr")
 	liveUrl := configure.Config.GetString("live_url")
 	log.Info("HTTP listen On ", httpAddr)
-	go server.RunServer(httpAddr, liveUrl)
+	go server.RunServerGin(httpAddr, liveUrl)
 }
 
 func init() {

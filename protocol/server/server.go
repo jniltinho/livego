@@ -2,45 +2,38 @@ package server
 
 import (
 	"embed"
-	"log"
+	"html/template"
+	"io/fs"
 	"net/http"
 	"time"
 
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/filesystem"
-	"github.com/gofiber/template/html/v2"
+	log "github.com/sirupsen/logrus"
+
+	"github.com/gin-gonic/gin"
 )
 
-//go:embed views/*
-var viewsfs embed.FS
+//go:embed views static
+var FS embed.FS
 
-//go:embed static/*
-var embedDirStatic embed.FS
-
-func RunServer(httpAddr, liveUrl string) {
-
+func RunServerGin(httpAddr, liveUrl string) {
 	hash := time.Now().Unix()
+	gin.DisableConsoleColor()
+	gin.SetMode(gin.ReleaseMode)
 
-	engine := html.NewFileSystem(http.FS(viewsfs), ".html")
+	router := gin.Default()
+	templ := template.Must(template.New("").ParseFS(FS, "views/*.html"))
+	router.SetHTMLTemplate(templ)
 
-	// Pass the engine to the Views
-	app := fiber.New(fiber.Config{Views: engine})
+	fe, _ := fs.Sub(FS, "static")
+	router.StaticFS("/static", http.FS(fe))
 
-	//app.Static("/static", "views/static")
-	app.Use("/static", filesystem.New(filesystem.Config{
-		Root:       http.FS(embedDirStatic),
-		PathPrefix: "static",
-		Browse:     true,
-	}))
-
-	app.Get("/live", func(c *fiber.Ctx) error {
-		// Render index - start with views directory
-		return c.Render("views/index", fiber.Map{
+	router.GET("/live", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{
 			"Title": "Live Stream",
 			"Hash":  hash,
 			"Url":   liveUrl,
 		})
 	})
 
-	log.Fatal(app.Listen(httpAddr))
+	log.Fatal(router.Run(httpAddr))
 }
