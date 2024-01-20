@@ -52,6 +52,7 @@ All options:
 Usage of ./livego:
       --api_addr string       HTTP manage interface server listen address (default ":8090")
       --config_file string    configure filename (default "livego.yaml")
+      --create_config         Create yaml config file
       --enable_rtmps          enable server session RTMPS
       --enable_tls_verify     Use system root CA to verify RTMPS connection, set this flag to false on Windows (default true)
       --flv_dir string        output flv file at flvDir/APP/KEY_TIME.flv (default "tmp")
@@ -67,6 +68,7 @@ Usage of ./livego:
       --rtmps_cert string     cert file path required for RTMPS (default "server.crt")
       --rtmps_key string      key file path required for RTMPS (default "server.key")
       --write_timeout int     write time out (default 10)
+
 ```
 
 ### [Use with flv.js](https://github.com/xqq/mpegts.js/tree/master/demo)
