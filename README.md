@@ -28,13 +28,13 @@ Simple and efficient live broadcast server:
 - MP3
 
 ## Installation
-After directly downloading the compiled [binary file](https://github.com/gwuhaolin/livego/releases), execute it on the command line.
+After directly downloading the compiled [binary file](https://github.com/jniltinho/livego/releases), execute it on the command line.
 
 #### Boot from Docker
-Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -d gwuhaolin/livego` to start
+Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -d jniltinho/livego` to start
 
 #### Compile from source
-1. Download the source code `git clone https://github.com/gwuhaolin/livego.git`
+1. Download the source code `git clone https://github.com/jniltinho/livego.git`
 2. Go to the livego directory and execute `go build` or `make build`
 
 ## Use
