@@ -16,6 +16,9 @@ jobs:
         run: go get
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
+        with:
+          version: latest
+          args: release --clean
       - name: Docker release
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
