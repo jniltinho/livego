@@ -3,8 +3,8 @@
 </p>
 
 
-[![Test](https://github.com/gwuhaolin/livego/workflows/Test/badge.svg)](https://github.com/gwuhaolin/livego/actions?query=workflow%3ATest)
-[![Release](https://github.com/gwuhaolin/livego/workflows/Release/badge.svg)](https://github.com/gwuhaolin/livego/actions?query=workflow%3ARelease)
+[![Test](https://github.com/jniltinho/livego/workflows/Test/badge.svg)](https://github.com/jniltinho/livego/actions?query=workflow%3ATest)
+[![Release](https://github.com/jniltinho/livego/workflows/Release/badge.svg)](https://github.com/jniltinho/livego/actions?query=workflow%3ARelease)
 
 Simple and efficient live broadcast server:
 - Very simple to install and use;
