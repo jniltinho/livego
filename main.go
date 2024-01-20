@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"fmt"
 	"net"
+	"os"
 	"path"
 	"runtime"
 	"time"
@@ -150,6 +151,12 @@ func init() {
 }
 
 func main() {
+
+	if configure.Config.GetBool("create_config") {
+		configure.CreateConfigFile()
+		os.Exit(0)
+	}
+
 	defer func() {
 		if r := recover(); r != nil {
 			log.Error("livego panic: ", r)

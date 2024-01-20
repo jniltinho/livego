@@ -126,6 +126,7 @@ func initDefault() {
 	pflag.String("http_addr", ":3001", "HTTP server listen address")
 	pflag.String("live_url", "http://localhost:7001/live/movie.flv", "Live URL")
 	pflag.Bool("enable_rtmps", false, "enable server session RTMPS")
+	pflag.Bool("create_config", false, "Create yaml config file")
 	pflag.String("rtmps_cert", "server.crt", "cert file path required for RTMPS")
 	pflag.String("rtmps_key", "server.key", "key file path required for RTMPS")
 	pflag.String("httpflv_addr", ":7001", "HTTP-FLV server listen address")
