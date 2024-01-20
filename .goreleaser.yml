@@ -2,15 +2,13 @@ before:
   hooks:
     - go mod tidy
 builds:
-  - binary: livego
+  - main: ./main.go
     id: livego
-    main: ./main.go
+    binary: livego
     goos:
       - windows
       - darwin
       - linux
-    env:
-      - CGO_ENABLED=0
     goarch:
       - amd64
       - 386
