@@ -15,7 +15,7 @@ import (
 //go:embed views static
 var FS embed.FS
 
-func RunServerGin(httpAddr, liveUrl string) {
+func RunServerGin(httpAddr, hlsUrl string) {
 	hash := time.Now().Unix()
 	gin.DisableConsoleColor()
 	gin.SetMode(gin.ReleaseMode)
@@ -27,11 +27,11 @@ func RunServerGin(httpAddr, liveUrl string) {
 	fe, _ := fs.Sub(FS, "static")
 	router.StaticFS("/static", http.FS(fe))
 
-	router.GET("/:appname/live", func(c *gin.Context) {
+	router.GET("/live/:appname", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"Title":   "Live Stream",
 			"Hash":    hash,
-			"Url":     liveUrl,
+			"HlsUrl":  hlsUrl,
 			"AppName": c.Param("appname"),
 		})
 	})

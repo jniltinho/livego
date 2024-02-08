@@ -48,6 +48,7 @@ type ServerCfg struct {
 	RTMPAddr        string       `mapstructure:"rtmp_addr"`
 	HTTPAddr        string       `mapstructure:"http_addr"`
 	LIVEUrl         string       `mapstructure:"live_url"`
+	HLSUrl          string       `mapstructure:"hls_url"`
 	HTTPFLVAddr     string       `mapstructure:"httpflv_addr"`
 	HLSAddr         string       `mapstructure:"hls_addr"`
 	HLSKeepAfterEnd bool         `mapstructure:"hls_keep_after_end"`
@@ -74,6 +75,7 @@ var defaultConf = ServerCfg{
 	APIAddr:         ":8090",
 	HTTPAddr:        ":3001",
 	LIVEUrl:         "http://localhost:7001/live/movie.flv",
+	HLSUrl:          "http://localhost:7002",
 	WriteTimeout:    10,
 	ReadTimeout:     10,
 	EnableTLSVerify: true,
@@ -125,6 +127,7 @@ func initDefault() {
 	pflag.String("rtmp_addr", ":1935", "RTMP server listen address")
 	pflag.String("http_addr", ":3001", "HTTP server listen address")
 	pflag.String("live_url", "http://localhost:7001/live/movie.flv", "Live URL")
+	pflag.String("hls_url", "http://localhost:7002", "HLS URL")
 	pflag.Bool("enable_rtmps", false, "enable server session RTMPS")
 	pflag.Bool("create_config", false, "Create yaml config file")
 	pflag.String("rtmps_cert", "server.crt", "cert file path required for RTMPS")

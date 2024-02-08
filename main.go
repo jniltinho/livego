@@ -135,9 +135,10 @@ func startAPI(stream *rtmp.RtmpStream) {
 
 func startHTTP() {
 	httpAddr := configure.Config.GetString("http_addr")
-	liveUrl := configure.Config.GetString("live_url")
+	//liveUrl := configure.Config.GetString("live_url")
+	hlsUrl := configure.Config.GetString("hls_url")
 	log.Info("HTTP listen On ", httpAddr)
-	go server.RunServerGin(httpAddr, liveUrl)
+	go server.RunServerGin(httpAddr, hlsUrl)
 }
 
 func init() {

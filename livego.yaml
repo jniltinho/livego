@@ -23,6 +23,7 @@
 # api_addr: ":8090"
 # http_addr: ":3001"
 # live_url: "http://localhost:7001/live/movie.flv"
+# hls_url: "http://localhost:7002"
 server:
 - appname: live
   live: true
