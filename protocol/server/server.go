@@ -27,12 +27,12 @@ func RunServerGin(httpAddr, hlsUrl string) {
 	fe, _ := fs.Sub(FS, "static")
 	router.StaticFS("/static", http.FS(fe))
 
-	router.GET("/live/:appname", func(c *gin.Context) {
+	router.GET("/live/:room", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Title":   "Live Stream",
-			"Hash":    hash,
-			"HlsUrl":  hlsUrl,
-			"AppName": c.Param("appname"),
+			"Title":  "Live Stream",
+			"Hash":   hash,
+			"HlsUrl": hlsUrl,
+			"Room":   c.Param("room"),
 		})
 	})
 
