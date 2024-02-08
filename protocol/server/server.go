@@ -29,10 +29,10 @@ func RunServerGin(httpAddr, liveUrl string) {
 
 	router.GET("/:appname/live", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Title": "Live Stream",
-			"Hash":  hash,
-			"Url":   liveUrl,
-			"AppName": appname,
+			"Title":   "Live Stream",
+			"Hash":    hash,
+			"Url":     liveUrl,
+			"AppName": c.Param("appname"),
 		})
 	})
 
